@@ -51,16 +51,14 @@ import { benjamin, thomas } from "./teachers.js";
  */
 
 maths.addTeacher(thomas);
-console.log("#9.", maths);
-console.log("#9.", thomas);
+console.log("#9.", maths.teacher);
 
 niklas.enlistToSubject(swedish);
-console.log("#9.", niklas);
-console.log("#9.", swedish);
+console.log("#9.", niklas.subjects);
 
 ths.addStudent(niklas);
 ths.addTeacher(thomas);
-console.log("#9.", ths);
+console.log("#9.", ths.teachers);
 
 /* ########### 10. */
 
@@ -74,3 +72,79 @@ console.log("#9.", ths);
 - relegateStudent is added to the school
 - fireTeacher is added to the school
  */
+
+niklas.quitSubject(swedish);
+console.log("#11.", niklas.subjects);
+
+maths.removeTeacher(thomas);
+console.log("#11.", maths.teacher);
+
+ths.addStudent(henrik);
+henrik.enlistToSubject(english);
+console.log("#11.", ths.students);
+console.log("#11.", henrik.subjects);
+
+ths.relegateStudent(henrik);
+console.log(ths);
+console.log(english.students);
+
+/* ########### 12. */
+
+/* No code needed. */
+
+/* ########### 13. */
+
+/* No code needed. But for you, you added your dummy data here in order to not have to it in the console all every time. */
+
+/* ########### 14. */
+
+/* I think this question is incorrectly written. Students in the school object is an array which means a for..of loop works great! */
+
+function displayAllStudents() {
+  for (const student of ths.students) {
+    console.log("#14.", student);
+  }
+}
+
+ths.addStudent(henrik);
+ths.addStudent(erik);
+
+// displayAllStudents();
+
+/* ########### 15. */
+
+function displayAllSubjectsOfStudent(student) {
+  const subjects = student.subjects.map((subject) => subject.name);
+  return subjects;
+}
+
+henrik.enlistToSubject(maths);
+henrik.enlistToSubject(swedish);
+
+const henrikSubjects = displayAllSubjectsOfStudent(henrik);
+console.log("#15a. subjects of Henrik", henrikSubjects);
+
+function displayAllStudentsEnlistedToSubject(subject) {
+  const studentsOfSubject = subject.students.map((student) => student.name);
+  return studentsOfSubject;
+}
+
+maths.addStudent(niklas);
+maths.addStudent(sofia);
+
+const studentEnlistedInMaths = displayAllStudentsEnlistedToSubject(maths);
+console.log("#15b. students enlisted in maths", studentEnlistedInMaths);
+
+function displayAllTeachers() {
+  ths.teachers.forEach((teacher) => {
+    console.log("#16", teacher.name);
+  });
+}
+
+ths.addTeacher(benjamin);
+
+displayAllTeachers();
+
+/* ########### 16. */
+
+/* Skipping this one. Great exercise for you though! */
